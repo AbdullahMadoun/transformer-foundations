@@ -1,0 +1,26 @@
+# Python & Pytest
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build & Package artifacts
+build/
+dist/
+*.egg-info/
+.venv/
+env/
+venv/
+
+# Data & Model Weights
+data/
+*.bin
+*.pkl
+*.pt
+
+# IDE & OS
+.DS_Store
+.vscode/
+.idea/
