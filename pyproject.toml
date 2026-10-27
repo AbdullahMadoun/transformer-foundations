@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "transformer-foundations"
 version = "0.1.0"
-description = "Decoder-Only Transformer Architecture, Parallel BPE Tokenizer, & Autoregressive Generation"
+description = "Stanford CS336 Assignment 1: a decoder-only language model and BPE tokenizer in plain PyTorch"
 authors = [
-    { name = "Abdullah", email = "abdullah@example.com" }
+    { name = "Abdullah Madoun" }
 ]
 readme = "README.md"
 requires-python = ">=3.10"

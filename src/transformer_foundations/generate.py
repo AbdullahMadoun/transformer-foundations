@@ -1,8 +1,8 @@
 
 import torch 
 import json
-from cs336_basics.Transformer import Transformer
-from cs336_basics.Tokenizer import Tokenizer
+from transformer_foundations.transformer import Transformer
+from transformer_foundations.tokenizer import Tokenizer
 import random
 import sys
 import time

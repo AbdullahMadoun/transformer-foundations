@@ -11,9 +11,9 @@ import json
 import time
 import numpy as np 
 import wandb
-from cs336_basics.Transformer import Transformer
+from transformer_foundations.transformer import Transformer
 
-from cs336_basics.train_scaffold import (
+from transformer_foundations.train_scaffold import (
     AdamW, 
     cross_entropy_loss, 
     learning_rate_schedule, 

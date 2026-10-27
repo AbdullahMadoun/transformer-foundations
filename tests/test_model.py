@@ -1,6 +1,6 @@
 import torch
 import pytest
-from llm_foundations.transformer import Transformer, RMSNorm, SwiGLU
+from transformer_foundations.transformer import Transformer, RMSNorm, SwiGLU
 
 def test_transformer_forward():
     vocab_size = 1000

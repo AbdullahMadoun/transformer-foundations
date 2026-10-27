@@ -1,5 +1,5 @@
 """
-LLM Foundations Package
+Transformer Foundations
 Decoder-Only Transformer Architecture, BPE Tokenizer, and Training/Generation Utilities.
 """
 
