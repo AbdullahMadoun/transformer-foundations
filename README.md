@@ -16,7 +16,7 @@ Embedding, RMSNorm, attention, loss and AdamW in place of the `torch.nn` and
 | `src/transformer_foundations/tokenizer.py` | Encoder that applies merges with a min-heap over a linked list of positions, O(N log K), and streams token IDs to a `uint16` file. |
 | `src/transformer_foundations/train_scaffold.py` | Cross-entropy with log-sum-exp, AdamW, cosine learning-rate schedule with warm-up, gradient clipping, batching from `np.memmap`, checkpoints. |
 | `src/transformer_foundations/train.py` | Training loop, logged to Weights & Biases. |
-| `src/transformer_foundations/generate.py` | Interactive generation from a saved checkpoint (top-k sampling). |
+| `src/transformer_foundations/generate.py` | Interactive generation from a saved checkpoint, with top-k and top-p (nucleus) sampling. |
 | `tests/test_model.py` | Shape and sanity checks for the model, RMSNorm and SwiGLU. |
 
 ## Run

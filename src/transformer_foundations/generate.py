@@ -3,19 +3,29 @@ import torch
 import json
 from transformer_foundations.transformer import Transformer
 from transformer_foundations.tokenizer import Tokenizer
-import random
 import sys
 import time
 import os
 
-def topk_sampling(logits):
-    indices = torch.topk(logits, k =5 ).indices.tolist()
-    sampled_token = random.sample(indices, k=1)
-    return sampled_token
-def topp_sampling(logits): 
-    indices = torch.topk(logits, k =5 ).indices.tolist()
-    sampled_token = random.sample(indices, k=1)
-    return sampled_token
+def topk_sampling(probs: torch.Tensor, k: int = 5) -> list[int]:
+    """Draw one token from the k most likely, in proportion to their renormalized probabilities."""
+    top = torch.topk(probs, k)
+    choice = torch.multinomial(top.values / top.values.sum(), 1)
+    return [top.indices[choice].item()]
+
+def topp_sampling(probs: torch.Tensor, p: float = 0.9) -> list[int]:
+    """Nucleus sampling: draw one token from the smallest set of tokens whose
+    probabilities sum to at least p, in proportion to their renormalized probabilities.
+
+    probs: 1-D tensor of next-token probabilities (already softmaxed).
+    Returns [token_id], the same shape topk_sampling returns.
+    """
+    sorted_probs, sorted_ids = torch.sort(probs, descending=True)
+    # Keep a token if the mass before it is still below p, so the token that crosses p stays in.
+    keep = torch.cumsum(sorted_probs, dim=-1) - sorted_probs < p
+    kept = sorted_probs[keep]
+    choice = torch.multinomial(kept / kept.sum(), 1)
+    return [sorted_ids[keep][choice].item()]
 with open('config_light.json', 'r') as file:
         config = json.load(file)
 transformer_param = config["transformer"]
